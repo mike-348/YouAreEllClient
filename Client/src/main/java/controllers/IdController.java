@@ -1,8 +1,12 @@
 package controllers;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.*;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.mashape.unirest.http.exceptions.UnirestException;
 import models.Id;
 
 public class IdController {
@@ -10,8 +14,9 @@ public class IdController {
 
     Id myId;
 
-    public ArrayList<Id> getIds() {
-        return null;
+    public List<Id> getIds() throws UnirestException, IOException {
+        TransactionController controller = new TransactionController();
+        return controller.getIds();
     }
 
     public Id postId(Id id) {

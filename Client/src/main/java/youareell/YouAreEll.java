@@ -1,6 +1,11 @@
 package youareell;
 
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.Unirest;
+import com.mashape.unirest.http.exceptions.UnirestException;
 import controllers.*;
+
+import java.io.IOException;
 
 public class YouAreEll {
 
@@ -10,12 +15,19 @@ public class YouAreEll {
         this.tt = t;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnirestException, IOException {
         // hmm: is this Dependency Injection?
-        YouAreEll urlhandler = new YouAreEll(
-            new TransactionController(
-                new MessageController(), new IdController()
-        ));
+
+
+        YouAreEll url = new YouAreEll(new TransactionController(
+               new MessageController(), new IdController()
+       ));
+
+//       tt.postId();
+//        YouAreEll urlhandler = new YouAreEll(
+//            new TransactionController(
+//                new MessageController(), new IdController()
+//        ));
 //        System.out.println(urlhandler.MakeURLCall("/ids", "GET", ""));
 //        System.out.println(urlhandler.MakeURLCall("/messages", "GET", ""));
     }
